@@ -2,9 +2,9 @@
 
 internal class UserAction
 {
-    private Table table = new Table();
+    public Table table = new Table();
 
-    private static int InputIdTable(int index)
+    public static int InputIdTable(int index)
     {
         int tableID;
         Console.Clear();
@@ -13,21 +13,21 @@ internal class UserAction
         return (tableID);
     }
 
-    private static string InputFoodName(int index)
+    public static string InputFoodName(int index)
     {
         string foodName;
         Console.Write("\n\tENTER THE FOOD NAME [" + (index + 1) + "] \n\t>_");
         foodName = Console.ReadLine();
         return (foodName);
     }
-    private static double InputPrice(int index)
+
+    public static double InputPrice(int index)
     {
         double foodPrice;
         Console.Write("\n\tENTER THE PRICE [" + (index + 1) + "] \n\t");
         foodPrice = double.Parse(Console.ReadLine());
         return (foodPrice);
     }
-
 
     public static Table CreateNewTableInfor(int index)
     {
@@ -40,12 +40,6 @@ internal class UserAction
         Console.Write("\n\t\tEnter Number ID: ");
         int i = int.Parse(Console.ReadLine());
         table = CreateNewTableInfor(i);
-    }
-
-    public void EditTableInfor()
-    {
-
-        Console.ReadKey();
     }
 
     public void InputRemovingTableID()
@@ -63,12 +57,18 @@ internal class UserAction
         return 1;
     }
 
+
     public void DisplayAllTable()
     {
         Console.Clear();
-        Table.PrintAllTables();
+        table.ShowAllFoods();
         Console.WriteLine("\n\tPress any key to return home screen");
         Console.ReadKey();
+    }
+
+    public void EditTableInfor()
+    {
+
     }
 
 }

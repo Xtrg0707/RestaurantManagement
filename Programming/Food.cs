@@ -2,9 +2,9 @@
 
 internal class Food
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public double Price { get; set; }
+    public static int Id { get; set; }
+    public static string Name { get; set; }
+    public static double Price { get; set; }
 
     public Food(int id, string name, double price)
     {
@@ -17,8 +17,13 @@ internal class Food
     {
     }
 
+    public void EditTableInfor(int id, string name, double price)
+    {
+        // Not yet
+        Console.ReadKey();
+    }
 
-    public static void PrintInformation()
+    public void PrintInformation()
     {
         Console.WriteLine($"", Id, Name, Price);
     }

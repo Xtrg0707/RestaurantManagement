@@ -9,21 +9,20 @@ internal class Table
     public string Name;
     public double Price;
 
-    public List<Food> Foods = new List<Food>();
+    public static List<Food> Foods = new List<Food>();
 
     public Table(int id, string name, double price)
     {
         Id = id;
         Name = name;
         Price = price;
-        Foods = new List<Food>();
     }
 
-
+    public Table() { }
 
     public void GetByID(int id)
     {
-        var result = Tables.Where(table => table.Id == id).ToList();
+        var result = Foods.Where(table => Food.Id == id).ToList();
         if (result.Count != 0)
         {
             result[0].PrintInformation();
@@ -35,14 +34,14 @@ internal class Table
         }
     }
 
-    public void EditGradeByID(int id, string name, double price)
+    public void EditTableByID(int id, string name, double price)
     {
-        var result = Tables.Where(table => table.Id == id).ToList();
+        var result = Foods.Where(table => Food.Id == id).ToList();
         if (result.Count != 0)
         {
             if (Interface.ConfirmSubmissionBox())
             {
-                result[0].EditTable(id, name, price);
+                result[0].EditTableInfor(id, name, price);
                 Console.WriteLine("\n\tTHIS TABLE HAS BEEN SUBMITED !");
             }
             else
@@ -59,12 +58,12 @@ internal class Table
 
     public static void RemoveTableByID(int id)
     {
-        var result = Tables.Where(table => table.Id == id).ToList();
+        var result = Foods.Where(table => Food.Id == id).ToList();
         bool confirm = Interface.ConfirmSubmissionBox();
         if (confirm)
         {
             Console.WriteLine("\n\tYOUR REQUEST IS SUBMITED !");
-            Tables.Remove(result[0]);
+            Foods.Remove(result[0]);
         }
         else if (!confirm)
         {
@@ -76,11 +75,11 @@ internal class Table
         }
     }
 
-    public static void PrintAllTables()
+    public void ShowAllFoods()
     {
-        foreach (var table in tables)
+        foreach (var food in Foods)
         {
-            Food.PrintInformation();
+            food.PrintInformation();
         }
     }
 }
